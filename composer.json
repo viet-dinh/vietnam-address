@@ -1,0 +1,22 @@
+{
+    "name": "tool/address-vn",
+    "description": "Viet Nam address include: Provinces, Districts and Ward information. Reference to: Tổng Cục Thống Kê: https://danhmuchanhchinh.gso.gov.vn/",
+    "authors": [
+        {
+            "name": "viet dinh",
+            "email": "dinhquocvietpro@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Tool\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.4",
+      "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
