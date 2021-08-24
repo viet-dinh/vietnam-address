@@ -8,7 +8,7 @@ Data: https://github.com/madnh/hanhchinhvn/tree/master/dist
 Reference to: Tổng Cục Thống Kê: https://danhmuchanhchinh.gso.gov.vn/
 
 ### Install
-Use PHP 7.4 and PHPUnit tess
+Use PHP 7.4
 
 * composer install
 
