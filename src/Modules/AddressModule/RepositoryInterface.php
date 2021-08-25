@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Tool\Modules\AddressModule;
 
 interface RepositoryInterface

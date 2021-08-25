@@ -2,33 +2,34 @@
 
 require __DIR__ . '/../Autoload.php';
 
+/**
+ * Deprecated (because use data source third party). Should use tool ExportArrayRecursiveStructureUseMXLSource
+ */
+
 use Tool\Modules\AddressModule\AddressModule;
 use Tool\Modules\AddressModule\Province\ProvinceRepository;
 use Tool\Modules\AddressModule\District\DistrictRepository;
 use Tool\Modules\AddressModule\Ward\WardRepository;
 
-$addressModule = AddressModule::getInstance();
-
 $provinceRepository = new ProvinceRepository();
 $districtRepository = new DistrictRepository();
 $wardRepository = new WardRepository();
 
-$addressModule = AddressModule::getInstance();
-$addressModule->implement($provinceRepository);
-$addressModule->implement($districtRepository);
-$addressModule->implement($wardRepository);
+AddressModule::getInstance()->implement($provinceRepository);
+AddressModule::getInstance()->implement($districtRepository);
+AddressModule::getInstance()->implement($wardRepository);
 
 //make data structure recursive
 $output['items'] = [];
 
-$allProvinces = $addressModule->getProvinceRepository()->getAll();
+$allProvinces = AddressModule::getInstance()->getProvinceRepository()->getAll();
 
 foreach ($allProvinces as $province) {
     $districtDatas = [];
 
-    $districts = $addressModule->getDistrictRepository()->getDistrictsByProVince($province);
+    $districts = AddressModule::getInstance()->getDistrictRepository()->getDistrictsByProVince($province);
     foreach ($districts as $district) {
-        $wards = $addressModule->getWardRepository()->getWardsByDistrict($district);
+        $wards = AddressModule::getInstance()->getWardRepository()->getWardsByDistrict($district);
         foreach ($wards as $ward) {
             $districtDatas[$district->getName()][] = $ward->getName();
         }
