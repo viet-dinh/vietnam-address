@@ -11,9 +11,6 @@ ExcelModule::getInstance()->implement($excelHandler);
 
 $filePath = RootDir . '/data/original-excel/25_08_2021.xls';
 
-//make data structure recursive
-$output['items'] = [];
-
 $data = FileUtil::getDataFromExcel($filePath);
 
 //write file
