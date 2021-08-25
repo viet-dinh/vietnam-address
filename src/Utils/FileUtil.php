@@ -1,6 +1,6 @@
 <?php
 
-namespace Tool\Util;
+namespace Tool\Utils;
 
 class FileUtil
 {

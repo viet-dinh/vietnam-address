@@ -2,7 +2,7 @@
 
 namespace Tool\Modules\AddressModule\Province;
 
-use Tool\Util\FileUtil;
+use Tool\Utils\FileUtil;
 
 class ProvinceRepository implements ProvinceRepositoryInterface
 {

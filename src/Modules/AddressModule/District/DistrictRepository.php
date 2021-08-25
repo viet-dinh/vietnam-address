@@ -3,7 +3,7 @@
 namespace Tool\Modules\AddressModule\District;
 
 use Tool\Modules\AddressModule\Province\ProvinceInterface;
-use Tool\Util\FileUtil;
+use Tool\Utils\FileUtil;
 
 class DistrictRepository implements DistrictRepositoryInterface
 {

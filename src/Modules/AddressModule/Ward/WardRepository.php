@@ -3,7 +3,7 @@
 namespace Tool\Modules\AddressModule\Ward;
 
 use Tool\Modules\AddressModule\District\DistrictInterface;
-use Tool\Util\FileUtil;
+use Tool\Utils\FileUtil;
 
 class WardRepository implements WardRepositoryInterface
 {
