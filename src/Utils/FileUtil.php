@@ -48,14 +48,14 @@ class FileUtil
                 }
             }
         }
-        setlocale(LC_COLLATE, 'vi_VN.UTF-8', 'vi.UTF-8', 'vi_VN', 'vi');
-        ksort($provinces);
+
+        SortVNUtil::ksort($provinces);
 
         foreach ($provinces as &$districts) {
-            ksort($districts);
+            SortVNUtil::ksort($districts);
 
             foreach ($districts as &$wards) {
-                sort($wards, SORT_NATURAL);
+                SortVNUtil::sort($wards);
             }
         }
 
