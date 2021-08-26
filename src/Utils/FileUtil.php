@@ -41,9 +41,9 @@ class FileUtil
                 if ($cell->getColumn() === CustomReader::WARD_COLUMM) {
                     if (!$cell->getValue()) {
                         //Huyện không có xã -> Cấp nhỏ nhất là huyện VD: Bạch Long Vĩ - Hải Phòng
-                        $provinces[$provinceName][$districtName] = [];
+                        $provinces[$provinceName][(string)$districtName] = [];
                     } else {
-                        $provinces[$provinceName][$districtName][] = EscapeUtil::escapeWardName($cell->getValue());
+                        $provinces[$provinceName][(string)$districtName][] = EscapeUtil::escapeWardName($cell->getValue());
                     }
                 }
             }
@@ -51,7 +51,7 @@ class FileUtil
 
         SortVNUtil::ksort($provinces);
 
-        foreach ($provinces as &$districts) {
+        foreach ($provinces as $provinceName => &$districts) {
             SortVNUtil::ksort($districts);
 
             foreach ($districts as &$wards) {

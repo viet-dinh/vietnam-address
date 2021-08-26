@@ -5,7 +5,6 @@ namespace Tool\Utils;
 class SortVNUtil
 {
     CONST VIET_NAM_CHARS =  array(
-        '/([0-9])/',
         '/a/', '/à/', '/ả/', '/ã/', '/á/', '/ạ/',
         '/ă/', '/ằ/', '/ẳ/', '/ẵ/', '/ắ/', '/ặ/',
         '/â/', '/ầ/', '/ẩ/', '/ẫ/', '/ấ/', '/ậ/',
@@ -33,7 +32,6 @@ class SortVNUtil
         '/d/', '/đ/', '/D/', '/Đ/');
 
     CONST ENCODE_CHARS = array(
-        "-$1",
         'a0', 'a02', 'a03', 'a04', 'a05', 'a06',
         'a1', 'a12', 'a13', 'a14', 'a15', 'a16',
         'a2', 'a22', 'a23', 'a24', 'a25', 'a26',
@@ -63,8 +61,9 @@ class SortVNUtil
     static private function encodedArray(array $array): array
     {
         $array_encoded = [];
+
         for ($i = 0; $i < count($array); $i++) {
-            $array_encoded[$i] = preg_replace(self::VIET_NAM_CHARS, self::ENCODE_CHARS, $array[$i]);
+            $array_encoded[$i] = preg_replace(self::VIET_NAM_CHARS, self::ENCODE_CHARS, strval($array[$i]));
             $array_encoded[$i] = preg_replace("/\b(\w+)([012])([2-6])(\w+)?\b/", "$1$2$4$3", $array_encoded[$i]);
         }
 
@@ -74,7 +73,8 @@ class SortVNUtil
     public static function sort(array &$array): array
     {
         $array_encoded = self::encodedArray($array);
-        array_multisort(array_map('strtolower', $array_encoded), SORT_ASC, SORT_STRING, $array);
+
+        array_multisort(array_map('strtolower', $array_encoded), SORT_ASC, SORT_NATURAL, $array, SORT_ASC, SORT_NATURAL);
 
         return $array;
     }
@@ -84,7 +84,8 @@ class SortVNUtil
         $array_keys = array_keys($array);
         $array_keys_encoded = self::encodedArray($array_keys);
 
-        array_multisort(array_map('strtolower', $array_keys_encoded), SORT_ASC, SORT_STRING, $array);
+        array_multisort(array_map('strtolower', $array_keys_encoded), SORT_ASC, SORT_NATURAL, $array, $array_keys);
+        $array = array_combine($array_keys, $array);
 
         return $array;
     }
