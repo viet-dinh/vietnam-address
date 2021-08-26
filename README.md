@@ -14,3 +14,4 @@ Use PHP 7.4
 
 From root to run example: 
 * php src/Tools/ExportArrayRecursiveStructure.php
+* php src/Tools/ExportArrayRecursiveStructureUseMXLSource.php (original source (xls file) from:https://danhmuchanhchinh.gso.gov.vn/
