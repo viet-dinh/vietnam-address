@@ -14,7 +14,7 @@ class EscapeUtil
             if (strcmp(mb_strtolower($word), mb_strtolower($prefix)) !== 0)
                 continue;
 
-            return trim(substr($string, strlen($word)));
+            return ltrim(trim(substr($string, strlen($word))), '0');
         }
 
         throw new \Exception('No thing is escaped');
